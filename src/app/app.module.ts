@@ -11,12 +11,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { LocalStorageModule } from 'angular-2-local-storage';
+
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    LocalStorageModule.withConfig({
+      prefix: 'ncounter-ng',
+      storageType: 'localStorage'
+    })
   ],
   declarations: [
     AppComponent,
