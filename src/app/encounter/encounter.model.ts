@@ -15,6 +15,11 @@ export class Encounter {
     this._currentIndex = (this._currentIndex + 1) % this._combatants.length;
   }
 
+  remove(combatant:Combatant): void {
+    this._combatants = this._combatants.filter( (c) => c != combatant );
+    if(this._currentIndex >= this._combatants.length) this._currentIndex = 0;
+  }
+
   get currentCombatant():Combatant {
     return this._combatants[this._currentIndex] || undefined;
   }

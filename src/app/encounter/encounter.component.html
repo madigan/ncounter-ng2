@@ -9,8 +9,9 @@
         [ngClass]="{'selected': currentEncounter.currentCombatant == combatant }">
         <td>{{combatant.initiative}}</td>
         <td>{{combatant.name}}</td>
-        <td><button class="btnNext" (click)="currentEncounter.advance()">Next</button></td>
+        <td><button (click)="currentEncounter.remove( combatant )">X</button></td>
       </tr>
     </tbody>
   </table>
+  <button (click)="currentEncounter.advance()">Next</button>
 </div>
