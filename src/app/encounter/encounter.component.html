@@ -1,0 +1,14 @@
+<div class="widget">
+  <table>
+    <thead>
+      <tr><td>Init</td><td>Name</td><td></td></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let combatant of currentEncounter.combatants">
+        <td>{{combatant.initiative}}</td>
+        <td>{{combatant.name}}</td>
+        <td><button (click)=combatant.advance>X</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
