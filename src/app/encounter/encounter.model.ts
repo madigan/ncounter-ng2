@@ -6,9 +6,9 @@ export class Encounter {
 
   constructor(combatants:Combatant[]) {
     this._combatants = combatants;
-    this._combatants.sort((a, b) => a.initiative-b.initiative);
+    this._combatants.sort((a, b) => b.initiative-a.initiative);
 
-    this._currentIndex = 0 || undefined;
+    this._currentIndex = 0;
   }
 
   advance():void {
@@ -18,7 +18,7 @@ export class Encounter {
   get currentCombatant():Combatant {
     return this._combatants[this._currentIndex] || undefined;
   }
-  
+
   get combatants():Combatant[] {
     return this._combatants;
   }
