@@ -1,8 +1,8 @@
 export class Combatant {
   name:string;
   initiative:number;
-  currentHP?:number;
-  maxHP?:number;
+  currentHP:number;
+  maxHP:number;
 
   constructor(name:string, initiative:number, health:number=1) {
     this.name = name;
