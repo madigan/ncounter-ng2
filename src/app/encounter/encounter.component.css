@@ -13,3 +13,7 @@ tr.selected {
 td {
   padding: 4px 12px 4px 4px;
 }
+
+input[type=number] {
+  width: 3em;
+}

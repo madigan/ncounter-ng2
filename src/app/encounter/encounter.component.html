@@ -1,7 +1,12 @@
 <div class="widget">
   <table>
     <thead>
-      <tr><td>Init</td><td>Name</td><td></td></tr>
+      <tr>
+        <td>Init</td>
+        <td>Name</td>
+        <td>Health</td>
+        <td></td>
+      </tr>
     </thead>
     <tbody>
       <tr
@@ -9,6 +14,11 @@
         [ngClass]="{'selected': currentEncounter.currentCombatant == combatant }">
         <td>{{combatant.initiative}}</td>
         <td>{{combatant.name}}</td>
+        <td>
+          <input type="number" [(ngModel)]="combatant.currentHP" />
+          /
+          <input type="number" [(ngModel)]="combatant.maxHP" />
+        </td>
         <td><button (click)="currentEncounter.remove( combatant )">X</button></td>
       </tr>
     </tbody>

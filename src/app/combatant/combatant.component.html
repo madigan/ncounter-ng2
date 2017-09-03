@@ -3,12 +3,16 @@
   <form>
     <table>
       <tr>
+        <td><label for="name">Name: </label></td>
+        <td><input [(ngModel)]="combatant.name" name="name" /></td>
+      </tr>
+      <tr>
         <td><label for="initiative">Init: </label></td>
         <td><input [(ngModel)]="combatant.initiative" name="initiative" /></td>
       </tr>
       <tr>
-        <td><label for="name">Name: </label></td>
-        <td><input [(ngModel)]="combatant.name" name="name" /></td>
+        <td><label for="health">Health: </label></td>
+        <td><input type="number" [(ngModel)]="combatant.health" name="health" /></td>
       </tr>
     </table>
     <button (click)="addCombatant()">Add</button>
