@@ -5,8 +5,7 @@ import { Combatant } from './combatant.model';
 
 @Component({
   selector: 'app-combatant',
-  templateUrl: './combatant.component.html',
-  styleUrls: ['./combatant.component.css']
+  templateUrl: './combatant.component.html'
 })
 export class CombatantComponent implements OnInit {
   public combatant:Combatant;
