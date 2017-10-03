@@ -1,7 +1,27 @@
 <div class='row'>
   <div class='col-md-12'>
-    <p>
-      TODO: Add bestiary page.
-    </p>
+    <div class='panel panel-info'>
+      <h2>Bestiary</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Hit Dice</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let monster of monsters'>
+            <td>{{monster.name}}</td>
+            <td>{{monster.description}}</td>
+            <td>{{monster.health.toString()}}</td>
+            <td><span class='glyphicon glyphicon-edit'></span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class='btn-group' style='padding: 10px; float: right'>
+        <button class='btn btn-primary'>Add Monster</button>
+      </div>
+    </div>
   </div>
 </div>

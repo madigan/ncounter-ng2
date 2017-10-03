@@ -16,6 +16,7 @@ import { RosterComponent } from './roster/roster.component';
 import { HomeComponent } from './home/home.component';
 import { QuestsComponent } from './quests/quests.component';
 import { FightComponent } from './fight/fight.component';
+import { AddMonsterComponent } from './bestiary/add-monster/add-monster.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     RosterComponent,
     HomeComponent,
     QuestsComponent,
-    FightComponent
+    FightComponent,
+    AddMonsterComponent
   ],
   providers: [
     EncounterService
