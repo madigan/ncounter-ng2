@@ -1,13 +1,14 @@
 <h1>Add Monster</h1>
 <div col-xs-offset-2>
-  <form (ngSubmit)='onSubmit()' #monsterForm='ngForm'>
+  <form (ngSubmit)='onSubmit(monsterForm)' #monsterForm='ngForm'>
       <div class="form-group">
         <label for="name">Name</label>
         <input id="name" name='name'
           type="text"
           class="form-control"
           placeholder="Name"
-          [(ngModel)]='monster.name'>
+          required
+          ngModel>
         <p class="help-block">Enter the name of the monster's species.</p>
       </div>
       <div class="form-group">
@@ -16,7 +17,7 @@
           type='text'
           class='form-control'
           placeholder="Something noteworthy about this type of monster..."
-          [(ngModel)]='monster.description'/>
+          ngModel>
         <p class="help-block">Enter a description of the monster.</p>
       </div>
       <div class="form-group">
@@ -25,7 +26,8 @@
           type="text"
           class="form-control"
           placeholder="2d6+1"
-          [(ngModel)]='health'>
+          required
+          ngModel>
         <p class="help-block">Use standard dice nomenclature- [quantity]d[sides]-[modifier].</p>
       </div>
       <div class='btn-group'>
