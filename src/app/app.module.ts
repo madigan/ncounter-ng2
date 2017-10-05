@@ -22,8 +22,9 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'quests', component: QuestsComponent },
   { path: 'bestiary', component: BestiaryComponent },
+  { path: 'bestiary/add', component: AddMonsterComponent },
   { path: 'roster', component: RosterComponent },
-  { path: 'fight', component: FightComponent } // TODO: Implement Me
+  { path: 'fight', component: FightComponent }
 ];
 
 @NgModule({

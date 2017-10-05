@@ -8,6 +8,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Hit Dice</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -15,12 +16,15 @@
             <td>{{monster.name}}</td>
             <td>{{monster.description}}</td>
             <td>{{monster.health.toString()}}</td>
-            <td><span class='glyphicon glyphicon-edit'></span></td>
+            <td>
+              <span class='glyphicon glyphicon-edit'></span>
+              <span class='glyphicon glyphicon-trash'></span>
+            </td>
           </tr>
         </tbody>
       </table>
       <div class='btn-group' style='padding: 10px; float: right'>
-        <button class='btn btn-primary'>Add Monster</button>
+        <button class='btn btn-primary' routerLink='add'>Add Monster</button>
       </div>
     </div>
   </div>

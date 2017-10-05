@@ -25,7 +25,7 @@ export class Die {
   }
 
   static parse(text:string):Die {
-    var expression = /([0-9]+)d([0-9]+)(([+|-][0-9]+))?/;
+    var expression = Die.getValidationRegExp();
     var matches = expression.exec( text );
     var quantity = parseInt(matches[1]);
     var sides = parseInt(matches[2]);
@@ -34,5 +34,9 @@ export class Die {
       modifiers = parseInt(matches[4]);
     }
     return new Die(quantity, sides, modifiers);
+  }
+
+  static getValidationRegExp():RegExp {
+    return /([0-9]+)d([0-9]+)(([+|-][0-9]+))?/;
   }
 }
