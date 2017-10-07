@@ -1,0 +1,64 @@
+<h1>Edit "{{monster.name}}"</h1>
+<div class='col-md-12'>
+  <form [formGroup]='editForm'>
+    <div class='form-group'>
+      <label for='id'>ID</label>
+      <input
+        type='text'
+        class='form-control'
+        disabled='true'
+        value="{{monster.id}}">
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name"
+        formControlName='name'
+        type="text"
+        class="form-control">
+      <p
+        class="help-block"
+        *ngIf="!editForm.get('name').valid">
+        Enter the name of the monster's species.
+      </p>
+    </div>
+    <div class="form-group">
+      <label for='description'>Description</label>
+      <input id='description'
+        formControlName='description'
+        type='text'
+        class='form-control'
+        placeholder="Something noteworthy about this type of monster...">
+      <p
+        class="help-block"
+        *ngIf="editForm.get('description').value.length == 0 && editForm.get('description').touched">
+        Enter an optional description of the monster.
+      </p>
+    </div>
+    <div class="form-group">
+      <label for="health">Health Dice</label>
+      <input id="health"
+        formControlName='health'
+        type="text"
+        class="form-control"
+        placeholder="2d6+1">
+      <p
+        class="help-block"
+        *ngIf="!editForm.get('health').valid">
+        Use standard dice nomenclature- [quantity]d[sides]-[modifier].
+      </p>
+    </div>
+    <div class='btn-group'>
+      <button
+        type='submit'
+        class='btn btn-success'
+        (click)='onSubmit()'
+        [disabled]='!editForm.valid'>
+        Save
+      </button>
+      <button class='btn btn-warning' routerLink='/bestiary'>Back</button>
+    </div>
+  </form>
+  <p>
+    {{ monster | json }}
+  </p>
+</div>

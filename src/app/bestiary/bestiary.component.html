@@ -17,8 +17,8 @@
             <td>{{monster.description}}</td>
             <td>{{monster.health.toString()}}</td>
             <td>
-              <span class='glyphicon glyphicon-edit'></span>
-              <span class='glyphicon glyphicon-trash'></span>
+              <span class='glyphicon glyphicon-edit' routerLink='./edit/{{ monster.id }}'></span>
+              <span class='glyphicon glyphicon-trash' (click)='removeMonster(monster)'></span>
             </td>
           </tr>
         </tbody>

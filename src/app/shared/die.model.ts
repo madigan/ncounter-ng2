@@ -31,12 +31,16 @@ export class Die {
     var sides = parseInt(matches[2]);
     var modifiers = 0;
     if(matches[3]) {
-      modifiers = parseInt(matches[4]);
+      modifiers = parseInt(matches[3]);
     }
     return new Die(quantity, sides, modifiers);
   }
 
   static getValidationRegExp():RegExp {
-    return /([0-9]+)d([0-9]+)(([+|-][0-9]+))?/;
+    return /([0-9]+)d([0-9]+)([+|-][0-9]+)?$/;
+  }
+
+  static validate(text:string) {
+    return text.match(Die.getValidationRegExp()) != null;
   }
 }

@@ -17,7 +17,7 @@ export class BestiaryComponent implements OnInit, OnDestroy {
   constructor(private monsterService:MonsterService) { }
 
   ngOnInit() {
-    this.monsterCreation = this.monsterService.monsterCreation.subscribe((monster:Monster) => {
+    this.monsterCreation = this.monsterService.monsterListChange.subscribe(() => {
       this.monsters = this.monsterService.getList(); // Wasteful?
     });
     this.monsters = this.monsterService.getList();
@@ -25,5 +25,9 @@ export class BestiaryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.monsterCreation.unsubscribe();
+  }
+
+  removeMonster(monster:Monster):void {
+    this.monsterService.removeMonster( monster );
   }
 }

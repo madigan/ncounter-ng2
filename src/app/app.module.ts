@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -17,12 +17,14 @@ import { HomeComponent } from './home/home.component';
 import { QuestsComponent } from './quests/quests.component';
 import { FightComponent } from './fight/fight.component';
 import { AddMonsterComponent } from './bestiary/add-monster/add-monster.component';
+import { EditMonsterComponent } from './bestiary/edit-monster/edit-monster.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'quests', component: QuestsComponent },
   { path: 'bestiary', component: BestiaryComponent },
   { path: 'bestiary/add', component: AddMonsterComponent },
+  { path: 'bestiary/edit/:id', component: EditMonsterComponent },
   { path: 'roster', component: RosterComponent },
   { path: 'fight', component: FightComponent }
 ];
@@ -31,6 +33,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot( appRoutes )
   ],
   declarations: [
@@ -44,7 +47,8 @@ const appRoutes: Routes = [
     HomeComponent,
     QuestsComponent,
     FightComponent,
-    AddMonsterComponent
+    AddMonsterComponent,
+    EditMonsterComponent
   ],
   providers: [
     EncounterService
