@@ -1,21 +1,46 @@
-<div class="col-lg-7">
+<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
   <h1>Add a Combatant!</h1>
   <form>
-    <table>
-      <tr>
-        <td><label for="name">Name: </label></td>
-        <td><input [(ngModel)]="combatant.name" name="name" /></td>
-      </tr>
-      <tr>
-        <td><label for="initiative">Init: </label></td>
-        <td><input [(ngModel)]="combatant.initiative" name="initiative" /></td>
-      </tr>
-      <tr>
-        <td><label for="health">Health: </label></td>
-        <td><input type="number" [(ngModel)]="combatant.health" name="health" /></td>
-      </tr>
-    </table>
-    <button (click)="addCombatant()">Add</button>
-    <button (click)="reset()">Reset</button>
+    <div class='form-group'>
+      <label for="species">Species</label>
+      <select id="species" name="species"
+        class='form-control'
+        [ngModel]='speciesId'
+        (ngModelChange)='onSelectSpecies($event)'>
+        <option value='undefined'>Select a species...</option>
+        <option
+          *ngFor='let monster of monsters'
+          [value]='monster.id'>
+          {{monster.name}}
+        </option>
+      </select>
+    </div>
+    <div class='form-group'>
+      <label for="name">Name</label>
+      <input id='name' name="name"
+        type='text'
+        class='form-control'
+        required
+        [(ngModel)]="combatant.name" />
+    </div>
+    <div class='form-group'>
+      <label for="initiative">
+        Init
+      </label>
+      <input id="initiative" name="initiative"
+        type='number'
+        class='form-control'
+        [(ngModel)]="combatant.initiative" />
+    </div>
+    <div class='form-group'>
+      <label for="health">Health</label>
+      <input id='health' name='health'
+        type="number"
+        [(ngModel)]="combatant.health"
+        class='form-control' />
+      <p class="help-block" *ngIf='species'>A {{species.name}} typically has {{species.health.toString()}} health points.</p>
+    </div>
+    <button class='btn btn-success' (click)="addCombatant()">Add</button>
+    <button class='btn btn-warning' (click)="reset()">Reset</button>
   </form>
 </div>
