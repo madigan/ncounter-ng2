@@ -60,6 +60,13 @@ export class MonsterService {
   }
 
   private loadList():void {
-    this.monsters = JSON.parse(localStorage.getItem(this.LOCAL_KEY) || "[]");
+    let rawMonsters = JSON.parse(localStorage.getItem(this.LOCAL_KEY) || "[]");
+    this.monsters = [];
+
+    rawMonsters.map((raw) => {
+      raw = Monster.fromJSON(raw);
+    });
+
+    this.monsters = rawMonsters;
   }
 }

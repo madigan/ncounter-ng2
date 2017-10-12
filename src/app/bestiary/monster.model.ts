@@ -7,4 +7,23 @@ export class Monster {
     public description:string="",
     public health:Die=new Die(),
   ) {}
+
+  static fromJSON(raw:{
+    id:number,
+    name:string,
+    description:string,
+    health:{
+      quantity:number,
+      sides:number,
+      modifier:number}
+    }):Monster {
+    return new Monster(
+      raw.id,
+      raw.name,
+      raw.description,
+      new Die(
+        raw.health.quantity,
+        raw.health.sides,
+        raw.health.modifier ));
+  }
 }
