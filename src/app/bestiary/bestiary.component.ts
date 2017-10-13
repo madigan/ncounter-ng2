@@ -30,4 +30,8 @@ export class BestiaryComponent implements OnInit, OnDestroy {
   removeMonster(monster:Monster):void {
     this.monsterService.removeMonster( monster );
   }
+
+  debug(monster:any) {
+    return monster.constructor.name;
+  }
 }

@@ -57,8 +57,4 @@ export class CombatantComponent implements OnInit {
         this.combatant.maxHP = this.combatant.currentHP;
       });
   }
-  debug() {
-    this.speciesId++;
-    this.onSelectSpecies(this.speciesId);
-  }
 }

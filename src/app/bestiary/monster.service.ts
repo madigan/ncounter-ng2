@@ -64,9 +64,7 @@ export class MonsterService {
     this.monsters = [];
 
     rawMonsters.map((raw) => {
-      raw = Monster.fromJSON(raw);
+      this.monsters.push(Monster.fromJSON(raw));
     });
-
-    this.monsters = rawMonsters;
   }
 }
