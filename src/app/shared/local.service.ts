@@ -22,6 +22,12 @@ export class LocalService<T extends JSONable<T> & IDable> {
     return T.ID;
   }
 
+  public update(T) {
+    if(T.ID == undefined) this.add(T);
+    else this.list[this.list.findIndex((obj)=>obj.ID == T.ID)] = T;
+    this.store();
+  }
+
   public remove(T) {
     this.list = this.list.filter((obj) => obj != T);
     this.store();

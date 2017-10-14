@@ -18,6 +18,11 @@ export class ObservableList<T extends JSONable<T> & IDable> extends LocalService
     return id;
   }
 
+  public update(T):void {
+    super.update(T);
+    this.listChange.next();
+  }
+
   // TODO: Only emit events if something was actually removed.
   public remove(T) {
     super.remove(T);

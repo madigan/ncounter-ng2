@@ -1,3 +1,46 @@
-<p>
-  edit-character works!
-</p>
+<h2>Edit "{{character.name}}"</h2>
+<div class='col-md-12'>
+  <form [formGroup]='editForm'>
+    <div class='form-group'>
+      <label for='id'>ID</label>
+      <input id='id'
+        [disabled]='true'
+        [value]='character.ID'
+        class='form-control'>
+    </div>
+    <div class='form-group'>
+      <label for='name'>Name</label>
+      <input id='name'
+        formControlName='name'
+        type='text'
+        class='form-control'>
+    </div>
+    <div class='form-group'>
+      <label for='description'>Description</label>
+      <input id='description'
+        formControlName='description'
+        type='text'
+        class='form-control'>
+    </div>
+    <div class='form-group'>
+      <label for='health'>Health</label>
+      <input id='health'
+        formControlName='health'
+        type='number'
+        class='form-control'>
+    </div>
+    <div class='btn-group'>
+      <button
+        type='submit'
+        class='btn btn-success'
+        (click)='onSubmit()'>
+        Save
+      </button>
+      <button
+        class='btn btn-warning'
+        routerLink='/roster'>
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
