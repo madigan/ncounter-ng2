@@ -1,7 +1,40 @@
 <div class='row'>
   <div class='col-md-12'>
-    <p>
-      TODO: Add roster page.
-    </p>
+    <div class='panel panel-info'>
+      <h2>Roster</h2>
+      <table
+        class='table'
+        *ngIf='characters.length > 0'>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Health</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let character of characters'>
+            <td>{{character.name}}</td>
+            <td>{{character.description}}</td>
+            <td>{{character.health}}</td>
+            <td>
+              <span class='glyphicon glyphicon-edit' routerLink='./edit/{{ character.id }}'></span>
+              <span class='glyphicon glyphicon-trash' (click)='removeCharacter(character)'></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div
+        class='panel-info panel-heading'
+        *ngIf='characters.length == 0'>
+        <p>
+          Uh oh! No characters in the roster. Maybe you should <a routerLink='add'>add</a> some?
+        </p>
+      </div>
+      <div class='btn-group' style='padding: 10px; float: right'>
+        <button class='btn btn-primary' routerLink='add'>Add Character</button>
+      </div>
+    </div>
   </div>
 </div>
