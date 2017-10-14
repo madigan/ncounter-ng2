@@ -18,6 +18,8 @@ import { QuestsComponent } from './quests/quests.component';
 import { FightComponent } from './fight/fight.component';
 import { AddMonsterComponent } from './bestiary/add-monster/add-monster.component';
 import { EditMonsterComponent } from './bestiary/edit-monster/edit-monster.component';
+import { AddCharacterComponent } from './roster/add-character/add-character.component';
+import { EditCharacterComponent } from './roster/edit-character/edit-character.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +28,8 @@ const appRoutes: Routes = [
   { path: 'bestiary/add', component: AddMonsterComponent },
   { path: 'bestiary/edit/:id', component: EditMonsterComponent },
   { path: 'roster', component: RosterComponent },
+  { path: 'roster/add', component: AddCharacterComponent },
+  { path: 'roster/edit/:id', component: EditCharacterComponent },
   { path: 'fight', component: FightComponent }
 ];
 
@@ -48,7 +52,9 @@ const appRoutes: Routes = [
     QuestsComponent,
     FightComponent,
     AddMonsterComponent,
-    EditMonsterComponent
+    EditMonsterComponent,
+    AddCharacterComponent,
+    EditCharacterComponent
   ],
   providers: [
     EncounterService
