@@ -1,10 +1,9 @@
-import { JSONable } from './jsonable.interface';
-import { IDable } from './idable.interface';
-
 /**
  *  Example usage: class MonsterService extends LocalService<Monster>
  */
-export class LocalService<T extends JSONable<T> & IDable> {
+import { Data } from "./data.interface";
+
+export class LocalService<T extends Data<T>> {
   private list:T[];
 
   constructor(readonly KEY:string, private type:{new():T}) {

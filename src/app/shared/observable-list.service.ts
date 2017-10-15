@@ -1,11 +1,10 @@
 import { Subject } from "rxjs/Subject";
 
-import { IDable } from "./idable.interface";
-import { JSONable } from "./jsonable.interface";
 import { LocalService } from "./local.service";
+import { Data } from "./data.interface";
 
 // TODO: Refactor to use dependency injection instead of inheritance.
-export class ObservableList<T extends JSONable<T> & IDable> extends LocalService<T> {
+export class ObservableList<T extends Data<T>> extends LocalService<T> {
   listChange:Subject<void> = new Subject<void>();
 
   constructor(KEY:string, type:{new():T}) {
