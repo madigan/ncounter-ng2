@@ -16,8 +16,10 @@ export class LocalService<T extends JSONable<T> & IDable> {
   }
 
   public add(T):number {
-    if(T.ID == undefined) T.ID = this.list.length;
+    // TODO: Replace this with just about anything.
+    if(T.ID == undefined) T.ID = new Date().getTime() + this.list.length;
     this.list.push(T);
+    this.list.sort((a,b)=>b.ID-a.ID);
     this.store();
     return T.ID;
   }

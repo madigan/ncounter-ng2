@@ -20,6 +20,7 @@ import { AddMonsterComponent } from './bestiary/add-monster/add-monster.componen
 import { EditMonsterComponent } from './bestiary/edit-monster/edit-monster.component';
 import { AddCharacterComponent } from './roster/add-character/add-character.component';
 import { EditCharacterComponent } from './roster/edit-character/edit-character.component';
+import { AddRosterCombatantComponent } from './fight/add-roster-combatant/add-roster-combatant.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     AddMonsterComponent,
     EditMonsterComponent,
     AddCharacterComponent,
-    EditCharacterComponent
+    EditCharacterComponent,
+    AddRosterCombatantComponent
   ],
   providers: [
     EncounterService

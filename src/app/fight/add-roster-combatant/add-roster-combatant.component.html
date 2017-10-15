@@ -1,0 +1,38 @@
+<h2>Add a Character!</h2>
+<form [formGroup]='selectForm'>
+  <div class='form-group'>
+    <label for="character">Character</label>
+    <select id="character"
+      formControlName="character"
+      [(ngModel)]='selectedID'
+      class='form-control'>
+      <option value='undefined'>Select a character...</option>
+      <option
+        *ngFor='let character of characters'
+        [value]='character.id'>
+        {{character.name}}
+      </option>
+    </select>
+  </div>
+  <div class='form-group'>
+    <label for='initiative'>Initiative</label>
+    <input id='initiative'
+      formControlName='initiative'
+      type='number'
+      class='form-control'>
+  </div>
+  <div>
+    <button
+      type='submit'
+      class='btn btn-success'
+      [disabled]='!selectForm.valid || selectedID == undefined'
+      (click)='onSubmit()'>
+      Add
+    </button>
+    <button
+      class='btn btn-warning'
+      (click)='reset()'>
+      Reset
+    </button>
+  </div>
+</form>
