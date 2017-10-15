@@ -1,8 +1,7 @@
 import { Die } from '../shared/die.model';
-import { IDable } from "../shared/idable.interface";
-import { JSONable } from "../shared/jsonable.interface";
+import { Data } from "../shared/data.interface";
 
-export class BestiaryEntry implements JSONable<BestiaryEntry>, IDable {
+export class BestiaryEntry implements Data<BestiaryEntry> {
   constructor(
     public ID:number|undefined = undefined,
     public name:string="",

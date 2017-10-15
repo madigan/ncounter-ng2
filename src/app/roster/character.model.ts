@@ -1,7 +1,6 @@
-import { JSONable } from "../shared/jsonable.interface";
-import { IDable } from "../shared/idable.interface";
+import { Data } from "../shared/data.interface";
 
-export class Character implements IDable, JSONable<Character> {
+export class Character implements Data<Character> {
   constructor(
     private id?:number,
     public name?:string,
