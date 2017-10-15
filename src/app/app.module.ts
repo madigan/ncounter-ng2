@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { AddMonsterComponent } from './fight/add-monster/add-monster.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header.component';
+import { FooterComponent } from './footer.component';
 import { BestiaryComponent } from './bestiary/bestiary.component';
 import { RosterComponent } from './roster/roster.component';
 import { HomeComponent } from './home/home.component';
