@@ -1,24 +1,26 @@
 import { Die } from '../shared/die.model';
+import { IDable } from "../shared/idable.interface";
+import { JSONable } from "../shared/jsonable.interface";
 
-export class Monster {
+export class BestiaryEntry implements JSONable<BestiaryEntry>, IDable {
   constructor(
-    public id:number|undefined = undefined,
+    public ID:number|undefined = undefined,
     public name:string="",
     public description:string="",
     public health:Die=new Die(),
   ) {}
 
-  static fromJSON(raw:{
-    id:number,
+  fromJSON(raw:{
+    ID:number,
     name:string,
     description:string,
     health:{
       quantity:number,
       sides:number,
       modifier:number}
-    }):Monster {
-    return new Monster(
-      raw.id,
+    }):BestiaryEntry {
+    return new BestiaryEntry(
+      raw.ID,
       raw.name,
       raw.description,
       new Die(

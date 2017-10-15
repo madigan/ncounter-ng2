@@ -1,47 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Monster } from '../monster.model';
-import { MonsterService } from '../monster.service';
+import { BestiaryEntry } from '../bestiary-entry.model';
+import { BestiaryService } from '../bestiary.service';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Die } from "../../shared/die.model";
 
 @Component({
-  selector: 'app-edit-monster',
-  templateUrl: './edit-monster.component.html'
+  selector: 'app-edit-bestiary-entry',
+  templateUrl: './edit-bestiary-entry.component.html'
 })
-export class EditMonsterComponent implements OnInit {
-  monster:Monster;
+export class EditBestiaryEntry implements OnInit {
+  entry:BestiaryEntry;
   editForm:FormGroup;
 
   constructor(
     private route:ActivatedRoute,
     private router:Router,
-    private monsterService:MonsterService
+    private bestiaryService:BestiaryService
   ) { }
 
   ngOnInit() {
     let id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
-    this.monster = this.monsterService.getMonster( id );
+    this.entry = this.bestiaryService.get( id );
 
     this.editForm = new FormGroup({
       'name': new FormControl(
-        this.monster.name,
+        this.entry.name,
         Validators.required),
       'description': new FormControl(
-        this.monster.description),
+        this.entry.description),
       'health': new FormControl(
-        this.monster.health.toString(),
+        this.entry.health.toString(),
         [Validators.required, this.diceFormat])
     });
   }
 
   onSubmit():void {
-    this.monster.name = this.editForm.get('name').value;
-    this.monster.description = this.editForm.get('description').value;
-    this.monster.health = new Die(this.editForm.get('health').value);
+    this.entry.name = this.editForm.get('name').value;
+    this.entry.description = this.editForm.get('description').value;
+    this.entry.health = new Die(this.editForm.get('health').value);
 
-    this.monsterService.updateMonster( this.monster );
+    this.bestiaryService.update( this.entry );
     this.router.navigate(['/bestiary']); // TODO: Make this relative??
   }
 

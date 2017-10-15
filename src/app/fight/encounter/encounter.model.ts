@@ -1,4 +1,4 @@
-import { Combatant } from '../combatant/combatant.model';
+import { Combatant } from '../combatant.model';
 
 export class Encounter {
   private _currentIndex:number;

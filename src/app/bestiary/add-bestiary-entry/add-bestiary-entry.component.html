@@ -1,6 +1,6 @@
 <h1>Add Monster</h1>
 <div col-xs-offset-2>
-  <form (ngSubmit)='onSubmit(monsterForm)' #monsterForm='ngForm'>
+  <form (ngSubmit)='onSubmit(addForm)' #addForm='ngForm'>
       <div class="form-group">
         <label for="name">Name</label>
         <input id="name" name='name'
@@ -34,7 +34,7 @@
         <button
           type='submit'
           class='btn btn-success'
-          [disabled]='!monsterForm.form.valid'>
+          [disabled]='!addForm.form.valid'>
           Create
         </button>
         <button class='btn btn-warning' routerLink='/bestiary'>Back</button>

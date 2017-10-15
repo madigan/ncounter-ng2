@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { MonsterService } from './bestiary/monster.service';
 import { CharacterService } from "./roster/character.service";
+import { BestiaryService } from "./bestiary/bestiary.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  providers: [ MonsterService, CharacterService ]
+  providers: [ BestiaryService, CharacterService ]
 })
 export class AppComponent { }

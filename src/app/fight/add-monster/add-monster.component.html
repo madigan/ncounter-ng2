@@ -4,12 +4,11 @@
     <label for="species">Species</label>
     <select id="species" name="species"
       class='form-control'
-      [ngModel]='speciesId'
-      (ngModelChange)='onSelectSpecies($event)'>
+      [(ngModel)]='speciesID'>
       <option value='undefined'>Select a species...</option>
       <option
         *ngFor='let monster of monsters'
-        [value]='monster.id'>
+        [value]='monster.ID'>
         {{monster.name}}
       </option>
     </select>

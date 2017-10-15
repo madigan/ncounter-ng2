@@ -12,13 +12,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor='let monster of monsters'>
-            <td>{{monster.name}}</td>
-            <td>{{monster.description}}</td>
-            <td>{{monster.health.toString()}}</td>
+          <tr *ngFor='let entry of entries'>
+            <td>{{entry.name}}</td>
+            <td>{{entry.description}}</td>
+            <td>{{entry.health.toString()}}</td>
             <td>
-              <span class='glyphicon glyphicon-edit' routerLink='./edit/{{ monster.id }}'></span>
-              <span class='glyphicon glyphicon-trash' (click)='removeMonster(monster)'></span>
+              <span class='glyphicon glyphicon-edit' routerLink='./edit/{{ entry.ID }}'></span>
+              <span class='glyphicon glyphicon-trash' (click)='removeEntry(entry)'></span>
             </td>
           </tr>
         </tbody>

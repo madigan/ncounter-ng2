@@ -1,23 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-
-import { EncounterService } from '../encounter/encounter.service';
-import { Combatant } from './combatant.model';
-import { MonsterService } from '../bestiary/monster.service';
-import { Monster } from '../bestiary/monster.model';
+import { Combatant } from "../combatant.model";
+import { BestiaryEntry } from "../../bestiary/bestiary-entry.model";
+import { BestiaryService } from "../../bestiary/bestiary.service";
+import { EncounterService } from "../encounter/encounter.service";
 
 @Component({
-  selector: 'app-combatant',
-  templateUrl: './combatant.component.html'
+  selector: 'app-add-monster',
+  templateUrl: './add-monster.component.html'
 })
-export class CombatantComponent implements OnInit {
-  public species:Monster;
+export class AddMonsterComponent implements OnInit {
+  public species:BestiaryEntry;
   public speciesId:number|undefined;
   public combatant:Combatant;
-  public monsters:Monster[];
+  public monsters:BestiaryEntry[];
 
   constructor(
     private encounterService:EncounterService,
-    private monsterService:MonsterService)
+    private monsterService:BestiaryService)
     { }
 
   ngOnInit() {
@@ -25,7 +24,7 @@ export class CombatantComponent implements OnInit {
     this.monsters = this.monsterService.getList();
   }
   // TODO: Should this be a "MonsterMaker" service? Or part of the "Combatant" service?
-  addMonster(monster:Monster):void {
+  addMonster(monster:BestiaryEntry):void {
     this.encounterService.getCurrentEncounter().add(
       new Combatant(
         "Fred (${monster.name})",
@@ -45,11 +44,17 @@ export class CombatantComponent implements OnInit {
     this.combatant = new Combatant("", 10);
   }
 
-  onSelectSpecies(id:number):void {
+  get speciesID():number|undefined {
+    return this.speciesId;
+  }
+
+  set speciesID(id:number|undefined) {
+    console.log(`Selected: ${id}`);
     this.speciesId = id;
     this.monsters
-      .filter((monster) => monster.id == id)
+      .filter((monster) => monster.ID == id)
       .map((monster) => {
+        console.log(`Selected: ${monster.name}`);
         this.species = monster;
         this.combatant.name = monster.name;
         this.combatant.initiative = 10;

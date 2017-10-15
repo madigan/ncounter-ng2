@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { EncounterService } from "../../encounter/encounter.service";
+import { EncounterService } from "../encounter/encounter.service";
 import { CharacterService } from "../../roster/character.service";
 import { Character } from "../../roster/character.model";
-import { Combatant } from "../../combatant/combatant.model";
+import { Combatant } from "../combatant.model";
 
 @Component({
   selector: 'app-add-roster-combatant',

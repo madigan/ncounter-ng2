@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Monster } from './monster.model';
-import { MonsterService } from './monster.service';
+import { BestiaryEntry } from './bestiary-entry.model';
+import { BestiaryService } from './bestiary.service';
 import { Die } from '../shared/die.model';
 
 @Component({
@@ -11,27 +11,23 @@ import { Die } from '../shared/die.model';
   styleUrls: ['./bestiary.component.css']
 })
 export class BestiaryComponent implements OnInit, OnDestroy {
-  monsters:Monster[] = [];
-  private monsterCreation:Subscription;
+  entries:BestiaryEntry[] = [];
+  private entryCreation:Subscription;
 
-  constructor(private monsterService:MonsterService) { }
+  constructor(private entryService:BestiaryService) { }
 
   ngOnInit() {
-    this.monsterCreation = this.monsterService.monsterListChange.subscribe(() => {
-      this.monsters = this.monsterService.getList(); // Wasteful?
+    this.entryCreation = this.entryService.listChange.subscribe(() => {
+      this.entries = this.entryService.getList(); // Wasteful?
     });
-    this.monsters = this.monsterService.getList();
+    this.entries = this.entryService.getList();
   }
 
   ngOnDestroy() {
-    this.monsterCreation.unsubscribe();
+    this.entryCreation.unsubscribe();
   }
 
-  removeMonster(monster:Monster):void {
-    this.monsterService.removeMonster( monster );
-  }
-
-  debug(monster:any) {
-    return monster.constructor.name;
+  removeEntry(entry:BestiaryEntry):void {
+    this.entryService.remove( entry );
   }
 }

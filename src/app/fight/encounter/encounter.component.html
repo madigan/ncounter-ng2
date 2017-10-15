@@ -24,6 +24,7 @@
       <td><button class='btn btn-danger glyphicon glyphicon-trash'(click)="current.remove( combatant )"></button></td>
     </tr>
   </tbody>
+  <button (click)="current.advance()">Next</button>
 </table>
 <div
   *ngIf='current.combatants.length == 0'
@@ -32,4 +33,3 @@
     There are no combatants in this encounter. Maybe you should add some?
   </div>
 </div>
-<button (click)="current.advance()">Next</button>
