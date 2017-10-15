@@ -1,19 +1,6 @@
-table {
-  border-collapse: collapse;
-}
-
-tr {
-  border: 1px solid #CCC;
-}
-
-tr.selected {
-  background-color: #ACC;
-}
-
-td {
-  padding: 4px 12px 4px 4px;
-}
-
 input[type=number] {
   width: 4em;
+}
+tr.selected {
+  background-color: #5cb85c;
 }

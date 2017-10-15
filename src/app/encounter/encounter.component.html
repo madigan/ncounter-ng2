@@ -1,27 +1,35 @@
-<div class="col-lg-5">
-  <table>
-    <thead>
-      <tr>
-        <td>Init</td>
-        <td>Name</td>
-        <td>Health</td>
-        <td></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="let combatant of currentEncounter.combatants"
-        [ngClass]="{'selected': currentEncounter.currentCombatant == combatant }">
-        <td>{{combatant.initiative}}</td>
-        <td>{{combatant.name}}</td>
-        <td>
-          <input type="number" [(ngModel)]="combatant.currentHP" />
-          /
-          <input type="number" [(ngModel)]="combatant.maxHP" />
-        </td>
-        <td><button (click)="currentEncounter.remove( combatant )">X</button></td>
-      </tr>
-    </tbody>
-  </table>
-  <button (click)="currentEncounter.advance()">Next</button>
+<h2>Current Encounter</h2>
+<table
+  *ngIf='current.combatants.length > 0'
+  class='table'>
+  <thead>
+    <tr>
+      <td>Init</td>
+      <td>Name</td>
+      <td>Health</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let combatant of current.combatants"
+      [ngClass]="{'selected': current.currentCombatant == combatant }">
+      <td>{{combatant.initiative}}</td>
+      <td>{{combatant.name}}</td>
+      <td>
+        <input type="number" [(ngModel)]="combatant.currentHP" />
+        /
+        <input type="number" [(ngModel)]="combatant.maxHP" />
+      </td>
+      <td><button class='btn btn-danger glyphicon glyphicon-trash'(click)="current.remove( combatant )"></button></td>
+    </tr>
+  </tbody>
+</table>
+<div
+  *ngIf='current.combatants.length == 0'
+  class='panel panel-info'>
+  <div class='panel-body'>
+    There are no combatants in this encounter. Maybe you should add some?
+  </div>
 </div>
+<button (click)="current.advance()">Next</button>

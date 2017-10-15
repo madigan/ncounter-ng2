@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from "rxjs/Subscription";
 
 import { Encounter } from './encounter.model';
 import { EncounterService } from './encounter.service';
@@ -8,10 +9,12 @@ import { EncounterService } from './encounter.service';
   templateUrl: './encounter.component.html',
   styleUrls: ['./encounter.component.css']
 })
-export class EncounterComponent {
+export class EncounterComponent implements OnInit {
+  current:Encounter;
+
   constructor( private encounterService:EncounterService ) { }
 
-  get currentEncounter():Encounter {
-    return this.encounterService.getCurrentEncounter();
+  ngOnInit() {
+    this.current = this.encounterService.getCurrentEncounter();
   }
 }
