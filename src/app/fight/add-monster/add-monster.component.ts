@@ -3,16 +3,17 @@ import { Combatant } from "../combatant.model";
 import { BestiaryEntry } from "../../bestiary/bestiary-entry.model";
 import { BestiaryService } from "../../bestiary/bestiary.service";
 import { EncounterService } from "../encounter/encounter.service";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-add-monster',
   templateUrl: './add-monster.component.html'
 })
 export class AddMonsterComponent implements OnInit {
-  public species:BestiaryEntry;
-  public speciesId:number|undefined;
-  public combatant:Combatant;
-  public monsters:BestiaryEntry[];
+  addForm:FormGroup;
+  species:BestiaryEntry;
+  speciesId:number|undefined;
+  monsters:BestiaryEntry[];
 
   constructor(
     private encounterService:EncounterService,
@@ -20,28 +21,29 @@ export class AddMonsterComponent implements OnInit {
     { }
 
   ngOnInit() {
+    this.addForm = new FormGroup({
+      'name': new FormControl('', Validators.required),
+      'initiative': new FormControl(10),
+      'health': new FormControl()
+    })
     this.reset();
     this.monsters = this.monsterService.getList();
   }
-  // TODO: Should this be a "MonsterMaker" service? Or part of the "Combatant" service?
-  addMonster(monster:BestiaryEntry):void {
-    this.encounterService.getCurrentEncounter().add(
-      new Combatant(
-        "Fred (${monster.name})",
-        10,
-        monster.health.roll()
-    ));
-  }
 
   addCombatant():void {
-    this.encounterService.getCurrentEncounter().add( this.combatant );
+    let combatant:Combatant = new Combatant(
+      this.addForm.get('name').value,
+      this.addForm.get('initiative').value,
+      this.addForm.get('health').value
+    );
+    this.encounterService.getCurrentEncounter().add( combatant );
     this.reset();
   }
 
   reset():void {
     this.speciesId = undefined;
     this.species = undefined;
-    this.combatant = new Combatant("", 10);
+    this.addForm.reset();
   }
 
   get speciesID():number|undefined {
@@ -56,10 +58,11 @@ export class AddMonsterComponent implements OnInit {
       .map((monster) => {
         console.log(`Selected: ${monster.name}`);
         this.species = monster;
-        this.combatant.name = monster.name;
-        this.combatant.initiative = 10;
-        this.combatant.currentHP = monster.health.roll();
-        this.combatant.maxHP = this.combatant.currentHP;
+        this.addForm.patchValue({
+          'name': `${monster.name}`,
+          'initiative': 10,
+          'health': monster.health.roll()
+        });
       });
   }
 }
