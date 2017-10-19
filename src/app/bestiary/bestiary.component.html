@@ -2,7 +2,9 @@
   <div class='col-md-12'>
     <div class='panel panel-info'>
       <h2>Bestiary</h2>
-      <table class="table">
+      <table
+        class="table"
+        *ngIf='entries.length > 0'>
         <thead>
           <tr>
             <th>Name</th>
@@ -17,12 +19,19 @@
             <td>{{entry.description}}</td>
             <td>{{entry.health.toString()}}</td>
             <td>
-              <span class='glyphicon glyphicon-edit' routerLink='./edit/{{ entry.ID }}'></span>
-              <span class='glyphicon glyphicon-trash' (click)='removeEntry(entry)'></span>
+              <span class='fa fa-edit fa-2x' routerLink='./edit/{{ entry.ID }}'></span>
+              <span class='fa fa-trash fa-2x' (click)='removeEntry(entry)'></span>
             </td>
           </tr>
         </tbody>
       </table>
+      <div
+        class='card'
+        *ngIf='entries.length == 0'>
+        <div class='card-body'>
+          Uh oh! No monsters in the bestiary. Maybe you should <a routerLink='add'>add</a> some?
+        </div>
+      </div>
       <div class='btn-group' style='padding: 10px; float: right'>
         <button class='btn btn-primary' routerLink='add'>Add Monster</button>
       </div>

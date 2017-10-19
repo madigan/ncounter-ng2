@@ -20,6 +20,8 @@ import { AddCharacterComponent } from './roster/add-character/add-character.comp
 import { EditCharacterComponent } from './roster/edit-character/edit-character.component';
 import { AddRosterCombatantComponent } from './fight/add-roster-combatant/add-roster-combatant.component';
 import { EncounterComponent } from "./fight/encounter/encounter.component";
+import { AdminComponent } from './admin/admin.component';
+import { NameGeneratorComponent } from './admin/name-generator/name-generator.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -55,7 +57,9 @@ const appRoutes: Routes = [
     EditBestiaryEntry,
     AddCharacterComponent,
     EditCharacterComponent,
-    AddRosterCombatantComponent
+    AddRosterCombatantComponent,
+    AdminComponent,
+    NameGeneratorComponent
   ],
   bootstrap: [AppComponent]
 })

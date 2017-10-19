@@ -19,18 +19,18 @@
             <td>{{character.description}}</td>
             <td>{{character.health}}</td>
             <td>
-              <span class='glyphicon glyphicon-edit' routerLink='./edit/{{ character.id }}'></span>
-              <span class='glyphicon glyphicon-trash' (click)='removeCharacter(character)'></span>
+              <span class='fa fa-edit fa-2x' routerLink='./edit/{{ character.id }}'></span>
+              <span class='fa fa-trash fa-2x' (click)='removeCharacter(character)'></span>
             </td>
           </tr>
         </tbody>
       </table>
       <div
-        class='panel-info panel-heading'
+        class='card'
         *ngIf='characters.length == 0'>
-        <p>
+        <div class='card-body'>
           Uh oh! No characters in the roster. Maybe you should <a routerLink='add'>add</a> some?
-        </p>
+        </div>
       </div>
       <div class='btn-group' style='padding: 10px; float: right'>
         <button class='btn btn-primary' routerLink='add'>Add Character</button>

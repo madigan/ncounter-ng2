@@ -21,15 +21,15 @@
         /
         <input type="number" [(ngModel)]="combatant.maxHP" />
       </td>
-      <td><button class='btn btn-danger glyphicon glyphicon-trash'(click)="current.remove( combatant )"></button></td>
+      <td><button class='btn btn-danger fa fa-trash'(click)="current.remove( combatant )"></button></td>
     </tr>
   </tbody>
   <button (click)="current.advance()">Next</button>
 </table>
 <div
   *ngIf='current.combatants.length == 0'
-  class='panel panel-info'>
-  <div class='panel-body'>
+  class='card'>
+  <div class='card-body'>
     There are no combatants in this encounter. Maybe you should add some?
   </div>
 </div>
