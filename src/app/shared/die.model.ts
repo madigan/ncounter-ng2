@@ -11,9 +11,9 @@ export class Die {
   roll():number {
     var total:number = 0;
     for(var i = 0; i < this.quantity; i++) {
-      total += Math.ceil(Math.random() * this.sides) + this.modifier;
+      total += Math.ceil(Math.random() * this.sides);
     }
-    return total;
+    return total + this.modifier;
   }
 
   toString():string {
