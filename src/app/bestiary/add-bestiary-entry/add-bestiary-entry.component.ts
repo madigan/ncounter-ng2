@@ -16,7 +16,7 @@ export class AddBestiaryEntryComponent implements OnInit {
 
   constructor(
     private bestiaryService:BestiaryService,
-    private nameGeneratorService:NameGeneratorService,
+    nameGeneratorService:NameGeneratorService,
     private router:Router) { }
 
   onSubmit():void {

@@ -19,7 +19,7 @@ export class EditBestiaryEntry implements OnInit {
     private route:ActivatedRoute,
     private router:Router,
     private bestiaryService:BestiaryService,
-    private nameGeneratorService:NameGeneratorService
+    nameGeneratorService:NameGeneratorService
   ) { }
 
   ngOnInit() {

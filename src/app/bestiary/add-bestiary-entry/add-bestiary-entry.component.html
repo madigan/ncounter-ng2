@@ -34,7 +34,7 @@
     </div>
     <div class="form-group">
       <label for="health">Health Dice</label>
-      <input id="health" name='health'
+      <input id="health"
         type="text"
         class="form-control"
         placeholder="2d6+1"
@@ -45,7 +45,7 @@
       <button
         type='submit'
         class='btn btn-success'
-        [disabled]='!addForm.form.valid'
+        [disabled]='!addForm.valid'
         (click)='onSubmit()'>
         Create
       </button>
