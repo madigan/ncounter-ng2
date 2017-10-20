@@ -16,7 +16,7 @@
         type="text"
         class="form-control">
       <p
-        class="help-block"
+        class="form-text text-muted"
         *ngIf="!editForm.get('name').valid">
         Enter the name of the monster's species.
       </p>
@@ -29,10 +29,23 @@
         class='form-control'
         placeholder="Something noteworthy about this type of monster...">
       <p
-        class="help-block"
+        class="form-text text-muted"
         *ngIf="editForm.get('description').value.length == 0 && editForm.get('description').touched">
         Enter an optional description of the monster.
       </p>
+    </div>
+    <div class='form-group'>
+      <label for='name-generator'>Name Generator</label>
+      <select id='name-generator'
+        class='form-control'
+        formControlName='nameGeneratorID'>
+        <option [value]='undefined'>(None)</option>
+        <option
+          *ngFor='let g of nameGeneratorService.getList()'
+          [value]='g.ID'>
+          {{ g.name }}
+        </option>
+      </select>
     </div>
     <div class="form-group">
       <label for="health">Health Dice</label>
@@ -42,7 +55,7 @@
         class="form-control"
         placeholder="2d6+1">
       <p
-        class="help-block"
+        class="form-text text-muted"
         *ngIf="!editForm.get('health').valid">
         Use standard dice nomenclature- [quantity]d[sides]-[modifier].
       </p>

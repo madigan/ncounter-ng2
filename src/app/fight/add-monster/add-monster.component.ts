@@ -4,6 +4,8 @@ import { BestiaryEntry } from "../../bestiary/bestiary-entry.model";
 import { BestiaryService } from "../../bestiary/bestiary.service";
 import { EncounterService } from "../encounter/encounter.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { NameGeneratorService } from "../../admin/name-generator.service";
+import { NameGenerator } from "../../admin/name-generator.model";
 
 @Component({
   selector: 'app-add-monster',
@@ -14,10 +16,12 @@ export class AddMonsterComponent implements OnInit {
   species:BestiaryEntry;
   speciesId:number|undefined;
   monsters:BestiaryEntry[];
+  generator:NameGenerator;
 
   constructor(
     private encounterService:EncounterService,
-    private monsterService:BestiaryService)
+    private monsterService:BestiaryService,
+    private nameGeneratorService:NameGeneratorService)
     { }
 
   ngOnInit() {
@@ -43,7 +47,17 @@ export class AddMonsterComponent implements OnInit {
   reset():void {
     this.speciesId = undefined;
     this.species = undefined;
+    this.generator = undefined;
     this.addForm.reset();
+  }
+
+  randomizeName():void {
+    if(this.generator) {
+      let newName = `${this.generator.generate()} (${this.species.name})`;
+      this.addForm.patchValue({
+        'name':newName
+      });
+    }
   }
 
   get speciesID():number|undefined {
@@ -51,18 +65,22 @@ export class AddMonsterComponent implements OnInit {
   }
 
   set speciesID(id:number|undefined) {
-    console.log(`Selected: ${id}`);
     this.speciesId = id;
     this.monsters
       .filter((monster) => monster.ID == id)
       .map((monster) => {
-        console.log(`Selected: ${monster.name}`);
         this.species = monster;
         this.addForm.patchValue({
           'name': `${monster.name}`,
           'initiative': 10,
           'health': monster.health.roll()
         });
+        if(monster.nameGeneratorID == undefined) {
+          this.generator = undefined;
+        } else {
+          // TODO: Make this safer just in case a name generator is removed.
+          this.generator = this.nameGeneratorService.get(monster.nameGeneratorID);
+        }
       });
   }
 }

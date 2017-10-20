@@ -5,6 +5,7 @@ import { BestiaryEntry } from '../bestiary-entry.model';
 import { BestiaryService } from '../bestiary.service';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Die } from "../../shared/die.model";
+import { NameGeneratorService } from "../../admin/name-generator.service";
 
 @Component({
   selector: 'app-edit-bestiary-entry',
@@ -17,7 +18,8 @@ export class EditBestiaryEntry implements OnInit {
   constructor(
     private route:ActivatedRoute,
     private router:Router,
-    private bestiaryService:BestiaryService
+    private bestiaryService:BestiaryService,
+    private nameGeneratorService:NameGeneratorService
   ) { }
 
   ngOnInit() {
@@ -30,6 +32,9 @@ export class EditBestiaryEntry implements OnInit {
         Validators.required),
       'description': new FormControl(
         this.entry.description),
+      'nameGeneratorID': new FormControl(
+        this.entry.nameGeneratorID
+      ),
       'health': new FormControl(
         this.entry.health.toString(),
         [Validators.required, this.diceFormat])
@@ -39,6 +44,7 @@ export class EditBestiaryEntry implements OnInit {
   onSubmit():void {
     this.entry.name = this.editForm.get('name').value;
     this.entry.description = this.editForm.get('description').value;
+    this.entry.nameGeneratorID = this.editForm.get('nameGeneratorID').value;
     this.entry.health = new Die(this.editForm.get('health').value);
 
     this.bestiaryService.update( this.entry );

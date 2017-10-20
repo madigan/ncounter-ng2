@@ -7,6 +7,7 @@ export class BestiaryEntry implements Data<BestiaryEntry> {
     public name:string="",
     public description:string="",
     public health:Die=new Die(),
+    public nameGeneratorID:number|undefined=undefined
   ) {}
 
   fromJSON(raw:{
@@ -16,7 +17,9 @@ export class BestiaryEntry implements Data<BestiaryEntry> {
     health:{
       quantity:number,
       sides:number,
-      modifier:number}
+      modifier:number
+    },
+    nameGeneratorID:number|undefined
     }):BestiaryEntry {
     return new BestiaryEntry(
       raw.ID,
@@ -25,6 +28,7 @@ export class BestiaryEntry implements Data<BestiaryEntry> {
       new Die(
         raw.health.quantity,
         raw.health.sides,
-        raw.health.modifier ));
+        raw.health.modifier ),
+      raw.nameGeneratorID);
   }
 }
