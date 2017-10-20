@@ -1,0 +1,35 @@
+<h2>Edit {{ generator.name }}</h2>
+<form [formGroup]='editForm'>
+  <div class='form-group'>
+    <label for='id'>ID</label>
+    <input id='id' value='{{ generator.ID }}' disabled='true' />
+  </div>
+  <div class='form-group'>
+    <label for='name'>Generator Name</label>
+    <input id='name'
+      formControlName='name'
+      type='text'
+      class='form-control' />
+  </div>
+  <div class='form-group'>
+    <label for='names'>Name List</label>
+    <textarea id='names'
+      formControlName='names'
+      class='form-control'
+      rows='{{ generator.names.length + 1 }}'>
+    </textarea>
+    <div class='form-text text-muted'>
+      Each name must be on a separate line.
+    </div>
+  </div>
+  <div>
+    <button
+      class='btn btn-success'
+      type='submit'
+      (click)='onSubmit()'
+      [disabled]='!editForm.valid'>
+      Save
+    </button>
+    <button class='btn btn-warning' routerLink='/admin'>Cancel</button>
+  </div>
+</form>

@@ -21,7 +21,8 @@ import { EditCharacterComponent } from './roster/edit-character/edit-character.c
 import { AddRosterCombatantComponent } from './fight/add-roster-combatant/add-roster-combatant.component';
 import { EncounterComponent } from "./fight/encounter/encounter.component";
 import { AdminComponent } from './admin/admin.component';
-import { NameGeneratorComponent } from './admin/name-generator/name-generator.component';
+import { AddNameGeneratorComponent } from './admin/add-name-generator/add-name-generator.component';
+import { EditNameGeneratorComponent } from './admin/edit-name-generator/edit-name-generator.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,7 +33,10 @@ const appRoutes: Routes = [
   { path: 'roster', component: RosterComponent },
   { path: 'roster/add', component: AddCharacterComponent },
   { path: 'roster/edit/:id', component: EditCharacterComponent },
-  { path: 'fight', component: FightComponent }
+  { path: 'fight', component: FightComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'admin/add', component: AddNameGeneratorComponent },
+  { path: 'admin/edit/:id', component: EditNameGeneratorComponent }
 ];
 
 @NgModule({
@@ -59,7 +63,8 @@ const appRoutes: Routes = [
     EditCharacterComponent,
     AddRosterCombatantComponent,
     AdminComponent,
-    NameGeneratorComponent
+    AddNameGeneratorComponent,
+    EditNameGeneratorComponent
   ],
   bootstrap: [AppComponent]
 })
