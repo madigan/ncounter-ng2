@@ -26,7 +26,7 @@
         formControlName='nameGeneratorID'>
         <option [value]='undefined'>(None)</option>
         <option
-          *ngFor='let g of nameGeneratorService.getList()'
+          *ngFor='let g of generators'
           [value]='g.ID'>
           {{ g.name }}
         </option>

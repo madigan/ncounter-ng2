@@ -6,6 +6,7 @@ import { BestiaryService } from '../bestiary.service';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Die } from "../../shared/die.model";
 import { NameGeneratorService } from "../../admin/name-generator.service";
+import { NameGenerator } from "../../admin/name-generator.model";
 
 @Component({
   selector: 'app-edit-bestiary-entry',
@@ -14,17 +15,20 @@ import { NameGeneratorService } from "../../admin/name-generator.service";
 export class EditBestiaryEntry implements OnInit {
   entry:BestiaryEntry;
   editForm:FormGroup;
+  generators:NameGenerator[];
 
   constructor(
     private route:ActivatedRoute,
     private router:Router,
     private bestiaryService:BestiaryService,
-    nameGeneratorService:NameGeneratorService
+    private nameGeneratorService:NameGeneratorService
   ) { }
 
   ngOnInit() {
     let id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
     this.entry = this.bestiaryService.get( id );
+
+    this.generators = this.nameGeneratorService.getList();
 
     this.editForm = new FormGroup({
       'name': new FormControl(

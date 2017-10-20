@@ -6,6 +6,7 @@ import { BestiaryEntry } from '../bestiary-entry.model';
 import { BestiaryService } from '../bestiary.service';
 import { Die } from '../../shared/die.model';
 import { NameGeneratorService } from "../../admin/name-generator.service";
+import { NameGenerator } from "../../admin/name-generator.model";
 
 @Component({
   selector: 'app-add-bestiary-entry',
@@ -13,10 +14,11 @@ import { NameGeneratorService } from "../../admin/name-generator.service";
 })
 export class AddBestiaryEntryComponent implements OnInit {
   addForm:FormGroup;
+  generators:NameGenerator[];
 
   constructor(
     private bestiaryService:BestiaryService,
-    nameGeneratorService:NameGeneratorService,
+    private nameGeneratorService:NameGeneratorService,
     private router:Router) { }
 
   onSubmit():void {
@@ -30,6 +32,8 @@ export class AddBestiaryEntryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.generators = this.nameGeneratorService.getList();
+
     this.addForm = new FormGroup({
       'name': new FormControl('', Validators.required),
       'description': new FormControl(),
