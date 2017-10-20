@@ -16,6 +16,6 @@ export class NameGenerator implements Data<NameGenerator> {
 
   generate():string {
     if(this.names.length == 0) return "Timmy the Unnamed";
-    else return this.names[Math.ceil(Math.random() * this.names.length)];
+    else return this.names[Math.floor(Math.random() * this.names.length)];
   }
 }
