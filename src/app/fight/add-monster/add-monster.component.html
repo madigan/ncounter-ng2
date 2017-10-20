@@ -43,7 +43,11 @@
       formControlName='health'
       type="number"
       class='form-control' />
-    <p class="help-block" *ngIf='species'>A {{species.name}} typically has {{species.health.toString()}} health points.</p>
+    <div 
+      class="form-text text-muted"
+      *ngIf='species'>
+      A {{species.name}} typically has {{species.health.toString()}} health points.
+    </div>
   </div>
   <button
     type='submit'

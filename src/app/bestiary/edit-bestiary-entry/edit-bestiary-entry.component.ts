@@ -45,7 +45,7 @@ export class EditBestiaryEntry implements OnInit {
     this.entry.name = this.editForm.get('name').value;
     this.entry.description = this.editForm.get('description').value;
     this.entry.nameGeneratorID = this.editForm.get('nameGeneratorID').value;
-    this.entry.health = new Die(this.editForm.get('health').value);
+    this.entry.health = Die.parse(this.editForm.get('health').value);
 
     this.bestiaryService.update( this.entry );
     this.router.navigate(['/bestiary']); // TODO: Make this relative??
