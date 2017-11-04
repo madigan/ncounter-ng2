@@ -89,6 +89,7 @@ export class AddMonsterComponent implements OnInit {
         } else {
           // TODO: Make this safer just in case a name generator is removed.
           this.generator = this.nameGeneratorService.get(monster.nameGeneratorID);
+          this.randomizeName();
         }
       });
   }
