@@ -81,7 +81,7 @@ export class AddMonsterComponent implements OnInit {
         this.species = monster;
         this.addForm.patchValue({
           'name': `${monster.name}`,
-          'initiative': 10,
+          'initiative': monster.initiative.roll(),
           'health': monster.health.roll()
         });
         if(monster.nameGeneratorID == undefined) {

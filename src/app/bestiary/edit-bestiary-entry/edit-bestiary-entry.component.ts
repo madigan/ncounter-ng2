@@ -37,11 +37,13 @@ export class EditBestiaryEntry implements OnInit {
       'description': new FormControl(
         this.entry.description),
       'nameGeneratorID': new FormControl(
-        this.entry.nameGeneratorID
-      ),
+        this.entry.nameGeneratorID),
       'health': new FormControl(
         this.entry.health.toString(),
-        [Validators.required, this.diceFormat])
+        [Validators.required, Validators.pattern(Die.getValidationRegExp())]),
+      'initiative': new FormControl(
+        this.entry.initiative.toString(),
+        [Validators.required, Validators.pattern(Die.getValidationRegExp())])
     });
   }
 
@@ -50,16 +52,9 @@ export class EditBestiaryEntry implements OnInit {
     this.entry.description = this.editForm.get('description').value;
     this.entry.nameGeneratorID = this.editForm.get('nameGeneratorID').value;
     this.entry.health = Die.parse(this.editForm.get('health').value);
+    this.entry.initiative = Die.parse(this.editForm.get('initiative').value);
 
     this.bestiaryService.update( this.entry );
     this.router.navigate(['/bestiary']); // TODO: Make this relative??
-  }
-
-  diceFormat(control:FormControl):{[key:string]: boolean} {
-    if(!Die.validate(control.value)) {
-      return {'dieInvalid': false };
-    } else {
-      return null;
-    }
   }
 }

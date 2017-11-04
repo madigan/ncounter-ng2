@@ -60,6 +60,19 @@
         Use standard dice nomenclature- [quantity]d[sides]-[modifier].
       </div>
     </div>
+    <div class="form-group">
+      <label for="initiative">Initiative Dice</label>
+      <input id="initiative"
+        formControlName='initiative'
+        type="text"
+        class="form-control"
+        placeholder="1d20">
+      <div
+        class="form-text text-muted"
+        *ngIf="!editForm.get('initiative').valid">
+        Use standard dice nomenclature- [quantity]d[sides]-[modifier].
+      </div>
+    </div>
     <div class='btn-group'>
       <button
         type='submit'

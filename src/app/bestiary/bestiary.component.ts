@@ -7,8 +7,7 @@ import { Die } from '../shared/die.model';
 
 @Component({
   selector: 'app-bestiary',
-  templateUrl: './bestiary.component.html',
-  styleUrls: ['./bestiary.component.css']
+  templateUrl: './bestiary.component.html'
 })
 export class BestiaryComponent implements OnInit, OnDestroy {
   entries:BestiaryEntry[] = [];

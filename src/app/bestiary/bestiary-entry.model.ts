@@ -7,6 +7,7 @@ export class BestiaryEntry implements Data<BestiaryEntry> {
     public name:string="",
     public description:string="",
     public health:Die=new Die(),
+    public initiative:Die=new Die(1, 20),
     public nameGeneratorID:number|undefined=undefined
   ) {}
 
@@ -19,16 +20,29 @@ export class BestiaryEntry implements Data<BestiaryEntry> {
       sides:number,
       modifier:number
     },
+    initiative:undefined|{
+      quantity:number,
+      sides:number,
+      modifier:number
+    }
     nameGeneratorID:number|undefined
     }):BestiaryEntry {
-    return new BestiaryEntry(
-      raw.ID,
-      raw.name,
-      raw.description,
-      new Die(
-        raw.health.quantity,
-        raw.health.sides,
-        raw.health.modifier ),
-      raw.nameGeneratorID);
+      if(!raw.health) {
+        // Backwards compatibility in case the initiative wasn't defined.
+        raw.health = { quantity: 1, sides: 20, modifier: 0};
+      }
+      return new BestiaryEntry(
+        raw.ID,
+        raw.name,
+        raw.description,
+        new Die(
+          raw.health.quantity,
+          raw.health.sides,
+          raw.health.modifier ),
+        new Die(
+          raw.health.quantity,
+          raw.health.sides,
+          raw.health.modifier ),
+        raw.nameGeneratorID);
   }
 }
