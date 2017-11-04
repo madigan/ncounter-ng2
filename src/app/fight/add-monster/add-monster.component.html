@@ -43,11 +43,18 @@
       formControlName='health'
       type="number"
       class='form-control' />
-    <div 
+    <div
       class="form-text text-muted"
       *ngIf='species'>
       A {{species.name}} typically has {{species.health.toString()}} health points.
     </div>
+  </div>
+  <div class='checkbox-inline'>
+    <label for='addAnother'>Add Another:
+      <input id='addAnother'
+        formControlName='addAnother'
+        type='checkbox'/>
+    </label>
   </div>
   <button
     type='submit'
@@ -62,3 +69,5 @@
     Reset
   </button>
 </form>
+<div class='danger'>
+</div>

@@ -28,7 +28,8 @@ export class AddMonsterComponent implements OnInit {
     this.addForm = new FormGroup({
       'name': new FormControl('', Validators.required),
       'initiative': new FormControl(10),
-      'health': new FormControl()
+      'health': new FormControl(),
+      'addAnother': new FormControl(true)
     })
     this.reset();
     this.monsters = this.monsterService.getList();
@@ -41,7 +42,11 @@ export class AddMonsterComponent implements OnInit {
       this.addForm.get('health').value
     );
     this.encounterService.getCurrentEncounter().add( combatant );
-    this.reset();
+    if(!this.addForm.get('addAnother').value) {
+      this.reset();
+    } else {
+      this.loadSpecies(this.speciesID);
+    }
   }
 
   reset():void {
@@ -66,6 +71,10 @@ export class AddMonsterComponent implements OnInit {
 
   set speciesID(id:number|undefined) {
     this.speciesId = id;
+    this.loadSpecies(id);
+  }
+
+  private loadSpecies(id:number|undefined) {
     this.monsters
       .filter((monster) => monster.ID == id)
       .map((monster) => {
