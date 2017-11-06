@@ -40,10 +40,12 @@ export class EditBestiaryEntry implements OnInit {
         this.entry.nameGeneratorID),
       'health': new FormControl(
         this.entry.health.toString(),
-        [Validators.required, Validators.pattern(Die.getValidationRegExp())]),
+        [Validators.required, Validators.pattern(Die.pattern)]),
       'initiative': new FormControl(
         this.entry.initiative.toString(),
-        [Validators.required, Validators.pattern(Die.getValidationRegExp())])
+        [Validators.required, Validators.pattern(Die.pattern)]),
+      'experience': new FormControl(
+        this.entry.experience)
     });
   }
 
@@ -53,6 +55,7 @@ export class EditBestiaryEntry implements OnInit {
     this.entry.nameGeneratorID = this.editForm.get('nameGeneratorID').value;
     this.entry.health = Die.parse(this.editForm.get('health').value);
     this.entry.initiative = Die.parse(this.editForm.get('initiative').value);
+    this.entry.experience = this.editForm.get('experience').value;
 
     this.bestiaryService.update( this.entry );
     this.router.navigate(['/bestiary']); // TODO: Make this relative??

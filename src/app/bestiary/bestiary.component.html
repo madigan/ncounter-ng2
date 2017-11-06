@@ -9,6 +9,7 @@
           <tr>
             <th>Name</th>
             <th>Description</th>
+            <th>XP</th>
             <th>Hit Dice</th>
             <th></th>
           </tr>
@@ -17,6 +18,7 @@
           <tr *ngFor='let entry of entries'>
             <td>{{entry.name}}</td>
             <td>{{entry.description}}</td>
+            <td>{{entry.experience}}</td>
             <td>{{entry.health.toString()}}</td>
             <td>
               <span class='fa fa-edit fa-2x' routerLink='./edit/{{ entry.ID }}'></span>

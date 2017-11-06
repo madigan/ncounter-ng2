@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { EncounterService } from "../encounter/encounter.service";
 import { CharacterService } from "../../roster/character.service";
 import { Character } from "../../roster/character.model";
 import { Combatant } from "../combatant.model";
+import { FightService } from "../fight.service";
 
 @Component({
   selector: 'app-add-roster-combatant',
@@ -17,7 +17,7 @@ export class AddRosterCombatantComponent implements OnInit {
 
   constructor(
     private characterService:CharacterService,
-    private encounterService:EncounterService
+    private fightService:FightService
   ) { }
 
   ngOnInit() {
@@ -40,7 +40,7 @@ export class AddRosterCombatantComponent implements OnInit {
           c.health
         ));
 
-    this.encounterService.getCurrentEncounter().add(combatant);
+    this.fightService.add(combatant);
     this.reset();
   }
 

@@ -1,0 +1,28 @@
+<h2>Graveyard</h2>
+<table
+  *ngIf='deceased.length > 0'
+  class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>XP</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let combatant of deceased">
+      <td>{{combatant.name}}</td>
+      <td>{{combatant.experience}}</td>
+      <td><button class='btn btn-danger fa fa-trash'(click)="remove( combatant )"></button></td>
+    </tr>
+  </tbody>
+</table>
+<div class='card' style='width:100%;'>
+  <div class='card-body'>
+    <h5 class='card-subtitle'>Total XP</h5>
+    <p class='card-text'>
+      {{totalExperience}}
+    </p>
+  </div>
+</div>

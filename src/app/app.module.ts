@@ -23,6 +23,7 @@ import { EncounterComponent } from "./fight/encounter/encounter.component";
 import { AdminComponent } from './admin/admin.component';
 import { AddNameGeneratorComponent } from './admin/add-name-generator/add-name-generator.component';
 import { EditNameGeneratorComponent } from './admin/edit-name-generator/edit-name-generator.component';
+import { GraveyardComponent } from './fight/graveyard/graveyard.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -64,7 +65,8 @@ const appRoutes: Routes = [
     AddRosterCombatantComponent,
     AdminComponent,
     AddNameGeneratorComponent,
-    EditNameGeneratorComponent
+    EditNameGeneratorComponent,
+    GraveyardComponent
   ],
   bootstrap: [AppComponent]
 })

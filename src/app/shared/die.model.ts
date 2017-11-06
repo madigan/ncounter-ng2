@@ -1,4 +1,6 @@
 export class Die {
+  static readonly pattern = /([0-9]+)d([0-9]+)([+|-][0-9]+)?$/;
+
   constructor(
     private quantity:number = 0,
     private sides:number = 0,
@@ -24,23 +26,19 @@ export class Die {
     return result;
   }
 
-  static parse(text:string):Die {
-    var expression = Die.getValidationRegExp();
-    var matches = expression.exec( text );
-    var quantity = parseInt(matches[1]);
-    var sides = parseInt(matches[2]);
-    var modifiers = 0;
-    if(matches[3]) {
-      modifiers = parseInt(matches[3]);
+  static parse(data:string|{quantity:number,sides:number,modifiers?:number}):Die {
+    if( typeof data === "string" ) {
+      var expression = Die.pattern;
+      var matches = expression.exec( data );
+      var quantity = parseInt(matches[1]);
+      var sides = parseInt(matches[2]);
+      var modifiers = 0;
+      if(matches[3]) {
+        modifiers = parseInt(matches[3]);
+      }
+      return new Die(quantity, sides, modifiers);
+    } else {
+      return new Die(data.quantity, data.sides, data.modifiers || 0);
     }
-    return new Die(quantity, sides, modifiers);
-  }
-
-  static getValidationRegExp():RegExp {
-    return /([0-9]+)d([0-9]+)([+|-][0-9]+)?$/;
-  }
-
-  static validate(text:string) {
-    return text.match(Die.getValidationRegExp()) != null;
   }
 }

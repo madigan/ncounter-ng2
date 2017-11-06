@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Combatant } from "../combatant.model";
 import { BestiaryEntry } from "../../bestiary/bestiary-entry.model";
 import { BestiaryService } from "../../bestiary/bestiary.service";
-import { EncounterService } from "../encounter/encounter.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { NameGeneratorService } from "../../admin/name-generator.service";
 import { NameGenerator } from "../../admin/name-generator.model";
+import { FightService } from "../fight.service";
 
 @Component({
   selector: 'app-add-monster',
@@ -19,10 +19,9 @@ export class AddMonsterComponent implements OnInit {
   generator:NameGenerator;
 
   constructor(
-    private encounterService:EncounterService,
+    private fightService:FightService,
     private monsterService:BestiaryService,
-    private nameGeneratorService:NameGeneratorService)
-    { }
+    private nameGeneratorService:NameGeneratorService) { }
 
   ngOnInit() {
     this.addForm = new FormGroup({
@@ -39,9 +38,10 @@ export class AddMonsterComponent implements OnInit {
     let combatant:Combatant = new Combatant(
       this.addForm.get('name').value,
       this.addForm.get('initiative').value,
-      this.addForm.get('health').value
+      this.addForm.get('health').value,
+      this.species.experience
     );
-    this.encounterService.getCurrentEncounter().add( combatant );
+    this.fightService.add( combatant );
     if(!this.addForm.get('addAnother').value) {
       this.reset();
     } else {

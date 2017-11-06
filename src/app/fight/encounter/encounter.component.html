@@ -4,10 +4,11 @@
   class='table'>
   <thead>
     <tr>
-      <td>Init</td>
-      <td>Name</td>
-      <td>Health</td>
-      <td></td>
+      <th>Init</th>
+      <th>Name</th>
+      <th>Health</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +22,12 @@
         /
         <input type="number" [(ngModel)]="combatant.maxHP" />
       </td>
-      <td><button class='btn btn-danger fa fa-trash'(click)="current.remove( combatant )"></button></td>
+      <td>
+        <button class='btn btn-danger fa fa-road'(click)="flee( combatant )"></button>
+      </td>
+      <td>
+        <button class='btn btn-danger fa fa-snapchat-ghost'(click)="kill( combatant )"></button>
+      </td>
     </tr>
   </tbody>
   <button (click)="current.advance()">Next</button>

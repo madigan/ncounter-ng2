@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { EncounterService } from "./encounter/encounter.service";
+import { FightService } from "./fight.service";
 
 @Component({
   selector: 'app-fight',
   templateUrl: './fight.component.html',
   providers: [
-    EncounterService
+    FightService
   ]
 })
 export class FightComponent implements OnInit {

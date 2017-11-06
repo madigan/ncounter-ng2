@@ -1,14 +1,13 @@
 export class Combatant {
-  name:string;
-  initiative:number;
   currentHP:number;
   maxHP:number;
 
-  constructor(name:string, initiative:number, health:number=1) {
+  constructor(public name:string, public initiative:number, health:number=1, public experience:number=0) {
     this.name = name;
     this.initiative = initiative;
     this.currentHP = health;
     this.maxHP = health;
+    this.experience = experience;
   }
 
   set health(health:number) {
