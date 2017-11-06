@@ -5,15 +5,17 @@ export class Character implements Data<Character> {
     private id?:number,
     public name?:string,
     public description?:string,
-    public health?:number
+    public health?:number,
+    public xp?:number
   ) { }
 
-  fromJSON(json: {id:number, name:string, description:string, health:number}): Character {
+  fromJSON(json: {id:number, name:string, description:string, health:number, xp?:number}): Character {
     return new Character(
       json.id,
       json.name,
       json.description,
-      json.health
+      json.health,
+      json.xp || 0
     );
   }
 

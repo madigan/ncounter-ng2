@@ -11,6 +11,7 @@ export class GraveyardComponent implements OnInit, OnDestroy {
   deceased:Combatant[] = [];
   private killEvent:Subscription;
   totalExperience:number = 0;
+  partySize:number=1;
 
   constructor(private fightService:FightService) { }
 

@@ -37,7 +37,8 @@ export class AddRosterCombatantComponent implements OnInit {
         combatant = new Combatant(
           c.name,
           this.selectForm.get('initiative').value,
-          c.health
+          c.health,
+          c.xp
         ));
 
     this.fightService.add(combatant);

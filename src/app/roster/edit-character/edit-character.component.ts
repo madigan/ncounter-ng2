@@ -26,7 +26,8 @@ export class EditCharacterComponent implements OnInit {
     this.editForm = new FormGroup({
       'name': new FormControl(this.character.name, Validators.required),
       'description': new FormControl(this.character.description),
-      'health': new FormControl(this.character.health, Validators.required)
+      'health': new FormControl(this.character.health, Validators.required),
+      'experience': new FormControl(this.character.xp)
     });
   }
 
@@ -34,6 +35,7 @@ export class EditCharacterComponent implements OnInit {
     this.character.name = this.editForm.get('name').value;
     this.character.description = this.editForm.get('description').value;
     this.character.health = this.editForm.get('health').value;
+    this.character.xp = this.editForm.get('experience').value;
 
     this.characterService.update(this.character);
 

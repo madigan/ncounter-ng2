@@ -20,7 +20,8 @@ export class AddCharacterComponent implements OnInit {
     this.addForm = new FormGroup({
       'name': new FormControl('', Validators.required),
       'description': new FormControl(),
-      'health': new FormControl('', Validators.required)
+      'health': new FormControl('', Validators.required),
+      'experience': new FormControl(0, Validators.required)
     });
   }
 
@@ -29,7 +30,8 @@ export class AddCharacterComponent implements OnInit {
       undefined,
       this.addForm.get('name').value,
       this.addForm.get('description').value,
-      this.addForm.get('health').value
+      this.addForm.get('health').value,
+      this.addForm.get('experience').value
     );
 
     this.characterService.add(character);
