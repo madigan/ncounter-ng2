@@ -12,16 +12,41 @@
       class='form-control' />
   </div>
   <div class='form-group'>
-    <label for='names'>Name List</label>
-    <textarea id='names'
-      formControlName='names'
-      class='form-control'
-      rows='{{ generator.names.length + 1 }}'>
-    </textarea>
-    <div class='form-text text-muted'>
-      Each name must be on a separate line.
+    <label for='separator'>Separator</label>
+    <input id='separator'
+      formControlName='separator'
+      type='text'
+      class='form-control' />
+  </div>
+  <div
+    class='row'
+    formArrayName='names'>
+    <div
+      *ngFor='let control of lists.controls; let i = index'
+      class='col-sm-{{12/lists.length}}'>
+      <label>Name List</label>
+      <textarea
+        class='form-control'
+        [formControlName]='i'
+        rows='{{ generator.names[i].length + 1 }}'>
+        {{control.value}}
+      </textarea>
     </div>
   </div>
+  <div class='form-text text-muted'>
+    Each name should be on a separate line.
+  </div>
+  <div>
+    <button
+      class='btn btn-info fa fa-minus'
+      (click)='removeList()'
+      [disabled]='!canRemove()'></button>
+    <button
+      class='btn btn-info fa fa-plus'
+      (click)='!addList()'
+      [disabled]='!canAdd()'></button>
+  </div>
+  <hr />
   <div>
     <button
       class='btn btn-success'
