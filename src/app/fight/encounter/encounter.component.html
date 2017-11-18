@@ -14,7 +14,7 @@
   <tbody>
     <tr
       *ngFor="let combatant of current.combatants"
-      [ngClass]="{'selected': current.currentCombatant == combatant }">
+      [ngClass]="{'alert alert-dark': current.current == combatant }">
       <td>{{combatant.initiative}}</td>
       <td>{{combatant.name}}</td>
       <td>

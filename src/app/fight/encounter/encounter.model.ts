@@ -28,4 +28,8 @@ export class Encounter {
   private sort():void {
     this.combatants.sort((a, b) => b.initiative-a.initiative);
   }
+
+  get current():Combatant {
+    return this.combatants[this.combatantIndex] || undefined;
+  }
 }
