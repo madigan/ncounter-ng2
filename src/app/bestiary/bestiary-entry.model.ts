@@ -35,7 +35,7 @@ export class BestiaryEntry implements Data<BestiaryEntry> {
       if(!raw.initiative) {
         initiative = new Die(1, 20);
       } else {
-        initiative = new Die(raw.health.quantity, raw.health.sides, raw.health.modifier);
+        initiative = new Die(raw.initiative.quantity, raw.initiative.sides, raw.initiative.modifier);
       }
 
       if(!raw.health) {
