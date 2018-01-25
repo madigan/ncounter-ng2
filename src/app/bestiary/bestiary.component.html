@@ -16,7 +16,12 @@
         </thead>
         <tbody>
           <tr *ngFor='let entry of entries'>
-            <td>{{entry.name}}</td>
+            <td *ngIf='entry.nameURL.length > 0'>
+              <a href='{{entry.nameURL}}' target="_blank">{{entry.name}}</a>
+            </td>
+            <td *ngIf='entry.nameURL.length == 0'>
+              {{entry.name}}
+            </td>
             <td>{{entry.description}}</td>
             <td>{{entry.experience}}</td>
             <td>{{entry.health.toString()}}</td>

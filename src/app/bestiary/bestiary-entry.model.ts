@@ -9,7 +9,8 @@ export class BestiaryEntry implements Data<BestiaryEntry> {
     public health:Die=new Die(),
     public initiative:Die=new Die(1, 20),
     public experience:number=0,
-    public nameGeneratorID:number|undefined=undefined
+    public nameGeneratorID:number|undefined=undefined,
+    public nameURL:string=""
   ) {}
 
   fromJSON(raw:{
@@ -27,7 +28,8 @@ export class BestiaryEntry implements Data<BestiaryEntry> {
       modifier:number
     },
     experience,
-    nameGeneratorID:number|undefined
+    nameGeneratorID:number|undefined,
+    nameURL:string
     }):BestiaryEntry {
       let health:Die, initiative:Die;
 
@@ -51,6 +53,7 @@ export class BestiaryEntry implements Data<BestiaryEntry> {
         health,
         initiative,
         raw.experience,
-        raw.nameGeneratorID);
+        raw.nameGeneratorID,
+        raw.nameURL);
   }
 }

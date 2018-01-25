@@ -22,6 +22,18 @@
       </div>
     </div>
     <div class="form-group">
+      <label for="nameURL">Name URL</label>
+      <input id="nameURL"
+        formControlName='nameURL'
+        type="text"
+        class="form-control">
+      <div
+        class="form-text text-muted"
+        *ngIf="!editForm.get('nameURL').valid">
+        A URL to an external page describing the monster.
+      </div>
+    </div>
+    <div class="form-group">
       <label for='description'>Description</label>
       <input id='description'
         formControlName='description'

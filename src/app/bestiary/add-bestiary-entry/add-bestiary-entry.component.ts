@@ -29,7 +29,8 @@ export class AddBestiaryEntryComponent implements OnInit {
         Die.parse(this.addForm.get('health').value),
         Die.parse(this.addForm.get('initiative').value),
         this.addForm.get('experience').value,
-        this.addForm.get('nameGeneratorID').value));
+        this.addForm.get('nameGeneratorID').value,
+        this.addForm.get('nameURL').value));
     this.router.navigate(['/bestiary']);
   }
 
@@ -42,7 +43,8 @@ export class AddBestiaryEntryComponent implements OnInit {
       'health': new FormControl('', [Validators.required, Validators.pattern(Die.pattern)]),
       'initiative': new FormControl('', [Validators.required, Validators.pattern(Die.pattern)]),
       'experience': new FormControl(0),
-      'nameGeneratorID': new FormControl()
+      'nameGeneratorID': new FormControl(),
+      'nameURL': new FormControl()
     })
   }
 }

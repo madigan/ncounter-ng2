@@ -45,7 +45,9 @@ export class EditBestiaryEntry implements OnInit {
         this.entry.initiative.toString(),
         [Validators.required, Validators.pattern(Die.pattern)]),
       'experience': new FormControl(
-        this.entry.experience)
+        this.entry.experience),
+      'nameURL': new FormControl(
+        this.entry.nameURL)
     });
   }
 
@@ -56,6 +58,7 @@ export class EditBestiaryEntry implements OnInit {
     this.entry.health = Die.parse(this.editForm.get('health').value);
     this.entry.initiative = Die.parse(this.editForm.get('initiative').value);
     this.entry.experience = this.editForm.get('experience').value;
+    this.entry.nameURL = this.editForm.get('nameURL').value;
 
     this.bestiaryService.update( this.entry );
     this.router.navigate(['/bestiary']); // TODO: Make this relative??
